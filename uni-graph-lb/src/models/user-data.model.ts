@@ -7,21 +7,21 @@ export class UserInfoModel extends Entity {
     required: false,
     default: 'Not given',
   })
-  university?: string;
+  universityID?: string;
 
   @property({
     type: 'string',
     required: false,
     default: 'Not given',
   })
-  faculty?: string;
+  facultyID?: string;
 
   @property({
     type: 'string',
     required: false,
     default: 'Not given',
   })
-  major?: string;
+  majorID?: string;
 
   constructor(data?: Partial<UserInfoModel>) {
     super(data);
@@ -29,14 +29,23 @@ export class UserInfoModel extends Entity {
 }
 
 @model()
-export class User extends Entity {
+export class UserData extends Entity {
   @property({
     type: 'string',
     id: true,
-    generated: false,
     required: true,
   })
+  userID: string;
+
+  @property({
+    type: 'string',
+  })
   username: string;
+
+  @property({
+    type: 'string',
+  })
+  email: string;
 
   @property({
     type: 'object',
@@ -63,18 +72,17 @@ export class User extends Entity {
 
   @property({
     type: 'string',
-    default: 'hu',
   })
   lang?: string;
 
 
-  constructor(data?: Partial<User>) {
+  constructor(data?: Partial<UserData>) {
     super(data);
   }
 }
 
-export interface UserRelations {
+export interface UserDataRelations {
   // describe navigational properties here
 }
 
-export type UserWithRelations = User & UserRelations;
+export type UserDataWithRelations = UserData & UserDataRelations;

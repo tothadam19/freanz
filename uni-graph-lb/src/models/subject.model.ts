@@ -5,27 +5,29 @@ export class Subject extends Entity {
   @property({
     type: 'string',
     id: true,
-    generated: false,
     required: true,
   })
-  subjectId: string;
+  subjectID: string;
 
   @property({
     type: 'string',
-    required: true,
+  })
+  universityID: string;
+
+  @property({
+    type: 'string',
   })
   neptunCode: string;
 
   @property({
     type: 'string',
-    required: true,
   })
   subjectName: string;
 
   @property({
     type: 'string',
   })
-  eSubjectName?: string;
+  eSubjectName: string;
 
   @property({
     type: 'number',
@@ -36,19 +38,18 @@ export class Subject extends Entity {
     type: 'array',
     itemType: 'string',
   })
-  prerequisiteIds?: string[];
+  prerequisiteSubjectIDs: string[];
 
   @property({
     type: 'array',
     itemType: 'string',
   })
-  builtOnIds?: string[];
+  builtOnSubjectIDs: string[];
 
   @property({
-    type: 'array',
-    itemType: 'string',
+    type: 'string',
   })
-  detailsIds?: string[];
+  subjectDetailsID: string;
 
 
   constructor(data?: Partial<Subject>) {

@@ -1,17 +1,17 @@
 import {Entity, model, property} from '@loopback/repository';
 
+
+
 @model()
 export class Semester extends Entity {
   @property({
-    type: 'number',
-    required: true,
+    type: 'string',
   })
-  semesterNum: number;
+  semesterID: string;
 
   @property({
     type: 'array',
     itemType: 'string',
-    required: true,
   })
   subjects: string[];
 
@@ -31,20 +31,32 @@ export class Template extends Entity {
 
   @property({
     type: 'string',
-    required: true,
   })
-  userId: string;
+  universityID: string;
+
+  @property({
+    type: 'string',
+  })
+  facultyID: string;
+
+  @property({
+    type: 'string',
+  })
+  majorID: string;
+
+  @property({
+    type: 'string',
+  })
+  userID: string;
 
   @property({
     type: 'boolean',
-    required: true,
   })
   isPublic: boolean;
 
   @property({
     type: 'array',
     itemType: 'object',
-    required: true,
   })
   semester: Semester[];
 

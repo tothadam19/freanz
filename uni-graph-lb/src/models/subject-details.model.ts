@@ -4,21 +4,23 @@ import {Entity, model, property} from '@loopback/repository';
 export class Comments extends Entity {
   @property({
     type: 'string',
-    required: true,
   })
-  commentId: string;
+  commentID: string;
+
+  @property({
+    type: 'string',
+  })
+  content: string;
 
   @property({
     type: 'date',
-    required: true,
   })
   date: string;
 
   @property({
     type: 'string',
-    required: true,
   })
-  byUserId: string;
+  byUserID: string;
 
 
   constructor(data?: Partial<Comments>) {
@@ -31,30 +33,26 @@ export class Comments extends Entity {
 export class Ratings extends Entity {
   @property({
     type: 'string',
-    required: true,
   })
-  ratingId: string;
+  ratingID: string;
 
   @property({
     type: 'number',
-    required: true,
   })
   difficultyLevel: number;
 
   @property({
     type: 'number',
-    required: true,
   })
   interestLevel: number;
 
   @property({
     type: 'number',
-    required: true,
   })
   practicalLevel: number;
 
 
-  constructor(data?: Partial<Comments>) {
+  constructor(data?: Partial<Ratings>) {
     super(data);
   }
 }
@@ -65,22 +63,21 @@ export class SubjectDetails extends Entity {
   @property({
     type: 'string',
     id: true,
-    generated: false,
     required: true,
   })
-  detailsId: string;
+  detailsID: string;
 
   @property({
     type: 'array',
     itemType: 'object',
   })
-  comments?: Comments[];
+  comments: Comments[];
 
   @property({
     type: 'array',
     itemType: 'object',
   })
-  ratings?: Ratings[];
+  ratings: Ratings[];
 
 
   constructor(data?: Partial<SubjectDetails>) {

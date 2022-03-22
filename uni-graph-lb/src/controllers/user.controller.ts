@@ -1,6 +1,5 @@
 import {authenticate, TokenService} from '@loopback/authentication';
 import {
-  Credentials,
   MyUserService,
   TokenServiceBindings,
   User,
@@ -8,49 +7,16 @@ import {
   UserServiceBindings
 } from '@loopback/authentication-jwt';
 import {inject} from '@loopback/core';
-import {model, property, repository} from '@loopback/repository';
+import {repository} from '@loopback/repository';
 import {
-  get,
-  getModelSchemaRef,
-  post,
-  requestBody,
-  SchemaObject
+  get, post,
+  requestBody
 } from '@loopback/rest';
 import {SecurityBindings, securityId, UserProfile} from '@loopback/security';
 import {genSalt, hash} from 'bcryptjs';
 import _ from 'lodash';
-
-@model()
-export class NewUserRequest extends User {
-  @property({
-    type: 'string',
-    required: true,
-  })
-  password: string;
-}
-
-const CredentialsSchema: SchemaObject = {
-  type: 'object',
-  required: ['email', 'password'],
-  properties: {
-    email: {
-      type: 'string',
-      format: 'email',
-    },
-    password: {
-      type: 'string',
-      minLength: 8,
-    },
-  },
-};
-
-export const CredentialsRequestBody = {
-  description: 'The input of login function',
-  required: true,
-  content: {
-    'application/json': {schema: CredentialsSchema},
-  },
-};
+import {UserDataRepository} from '../repositories';
+import {loginRequestBody, registerRequestBody} from '../requestSchemas/user';
 
 export class UserController {
   constructor(
@@ -61,6 +27,7 @@ export class UserController {
     @inject(SecurityBindings.USER, {optional: true})
     public user: UserProfile,
     @repository(UserRepository) protected userRepository: UserRepository,
+    @repository(UserDataRepository) public userDataRepository: UserDataRepository,
   ) {}
 
   @post('/users/login', {
@@ -83,10 +50,11 @@ export class UserController {
     },
   })
   async login(
-    @requestBody(CredentialsRequestBody) credentials: Credentials,
-  ): Promise<{token: string}> {
+    @requestBody(loginRequestBody) credentials: {'email': string, 'username': string, 'password': string},
+  ): Promise<{token: string} | string> {
     // ensure the user exists, and the password is correct
-    const user = await this.userService.verifyCredentials(credentials);
+    const user = await this.getUserFromRequestBodyParams(credentials.email, credentials.username, credentials.password);
+    if (typeof user === 'string') return user;
     // convert a User object into a UserProfile object (reduced set of properties)
     const userProfile = this.userService.convertToUserProfile(user);
 
@@ -132,23 +100,37 @@ export class UserController {
     },
   })
   async signUp(
-    @requestBody({
-      content: {
-        'application/json': {
-          schema: getModelSchemaRef(NewUserRequest, {
-            title: 'NewUser',
-          }),
-        },
-      },
-    })
-    newUserRequest: NewUserRequest,
-  ): Promise<User> {
-    const password = await hash(newUserRequest.password, await genSalt());
+    @requestBody(registerRequestBody) register: {'email': string, 'username': string, 'password': string},
+  ): Promise<User | string> {
+    const uniqueUsernameTest = await this.userDataRepository.usernameUniqueTest(register.username);
+    if (uniqueUsernameTest !== null) return 'This username is already in use';
+    const password = await hash(register.password, await genSalt());
     const savedUser = await this.userRepository.create(
-      _.omit(newUserRequest, 'password'),
+      _.omit(register, 'password'),
     );
     await this.userRepository.userCredentials(savedUser.id).create({password});
-
+    await this.userDataRepository.contructOnNewRegister(savedUser.username, savedUser.id, savedUser.email);
     return savedUser;
+  }
+
+
+  async getUserFromRequestBodyParams(
+    email: string,
+    username: string,
+    password: string
+  ): Promise<User | string>{
+    if (email === undefined) {
+      const user = await this.userDataRepository.getMail(username);
+      if (user === null) return 'username not found';
+      if (user?.email === undefined) return 'Unexcepted error'
+      return this.userService.verifyCredentials({
+        email: user?.email,
+        password: password
+      })
+    }
+    return this.userService.verifyCredentials({
+      email: email,
+      password: password
+    })
   }
 }

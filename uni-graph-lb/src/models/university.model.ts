@@ -4,14 +4,17 @@ import {Entity, model, property} from '@loopback/repository';
 export class Major extends Entity {
   @property({
     type: 'string',
-    required: true,
+  })
+  majorID: string;
+
+  @property({
+    type: 'string',
   })
   majorName: string;
 
   @property({
     type: 'array',
     itemType: 'string',
-    required: true,
   })
   templateID: string[];
 
@@ -24,14 +27,17 @@ export class Major extends Entity {
 export class Faculty extends Entity {
   @property({
     type: 'string',
-    required: true,
+  })
+  facultyID: string;
+
+  @property({
+    type: 'string',
   })
   facultyName: string;
 
   @property({
     type: 'array',
     itemType: 'object',
-    required: true,
   })
   major: Major[];
 
@@ -43,22 +49,20 @@ export class Faculty extends Entity {
 @model()
 export class University extends Entity {
   @property({
-    type: 'number',
+    type: 'string',
     id: true,
     required: true,
   })
-  universityId?: number;
+  universityID: string;
 
   @property({
     type: 'string',
-    required: true,
   })
   universityName: string;
 
   @property({
     type: 'array',
     itemType: 'object',
-    required: true,
   })
   faculty: Faculty[];
 

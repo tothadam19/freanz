@@ -1,22 +1,15 @@
-import {authenticate} from '@loopback/authentication';
+import {repository} from '@loopback/repository';
 import {
-  Count,
-  CountSchema,
-  Filter,
-  FilterExcludingWhere,
-  repository,
-  Where
-} from '@loopback/repository';
-import {
-  del, get,
-  getModelSchemaRef, param, patch, post, put, requestBody,
+  get,
+  getModelSchemaRef, post, put, requestBody,
   response
 } from '@loopback/rest';
 import {University} from '../models';
 import {UniversityRepository} from '../repositories';
+import {getFacultiesRequestBody, getMajorsRequestBody, getTemplatesRequestBody, NewFacultyRequestBody, NewMajorRequestBody, NewTemplateRequestBody, newUniversityRequestBody} from '../requestSchemas/university';
 
 
-@authenticate('jwt')
+//@authenticate('jwt')
 export class UniversitiesController {
   constructor(
     @repository(UniversityRepository)
@@ -29,119 +22,105 @@ export class UniversitiesController {
     content: {'application/json': {schema: getModelSchemaRef(University)}},
   })
   async create(
-    @requestBody({
-      content: {
-        'application/json': {
-          schema: getModelSchemaRef(University, {
-            title: 'NewUniversity',
-
-          }),
-        },
-      },
-    })
-    university: University,
+    @requestBody(newUniversityRequestBody) university: {'universityName': string},
   ): Promise<University> {
-    return this.universityRepository.create(university);
-  }
-
-  @get('/universities/count')
-  @response(200, {
-    description: 'University model count',
-    content: {'application/json': {schema: CountSchema}},
-  })
-  async count(
-    @param.where(University) where?: Where<University>,
-  ): Promise<Count> {
-    return this.universityRepository.count(where);
+    return this.universityRepository.createNewUniversity(university.universityName);
   }
 
   @get('/universities')
   @response(200, {
-    description: 'Array of University model instances',
+    description: 'List of unis',
     content: {
       'application/json': {
         schema: {
           type: 'array',
-          items: getModelSchemaRef(University, {includeRelations: true}),
         },
       },
     },
   })
-  async find(
-    @param.filter(University) filter?: Filter<University>,
-  ): Promise<University[]> {
-    return this.universityRepository.find(filter);
+  async getUnis(
+  ): Promise<Array<object> | undefined> {
+    return this.universityRepository.getUnis();
   }
 
-  @patch('/universities')
+  @post('/universities/faculty')
   @response(200, {
-    description: 'University PATCH success count',
-    content: {'application/json': {schema: CountSchema}},
-  })
-  async updateAll(
-    @requestBody({
-      content: {
-        'application/json': {
-          schema: getModelSchemaRef(University, {partial: true}),
-        },
-      },
-    })
-    university: University,
-    @param.where(University) where?: Where<University>,
-  ): Promise<Count> {
-    return this.universityRepository.updateAll(university, where);
-  }
-
-  @get('/universities/{id}')
-  @response(200, {
-    description: 'University model instance',
+    description: 'List of faculties to one uni',
     content: {
       'application/json': {
-        schema: getModelSchemaRef(University, {includeRelations: true}),
+        schema: {
+          type: 'array',
+        },
       },
     },
   })
-  async findById(
-    @param.path.number('id') id: number,
-    @param.filter(University, {exclude: 'where'}) filter?: FilterExcludingWhere<University>
-  ): Promise<University> {
-    return this.universityRepository.findById(id, filter);
+  async getFaculties(
+    @requestBody(getFacultiesRequestBody) getFaculty: {'universityID': string}
+  ): Promise<Array<object> | string> {
+    return this.universityRepository.getFaculties(getFaculty.universityID);
   }
 
-  @patch('/universities/{id}')
-  @response(204, {
-    description: 'University PATCH success',
-  })
-  async updateById(
-    @param.path.number('id') id: number,
-    @requestBody({
-      content: {
-        'application/json': {
-          schema: getModelSchemaRef(University, {partial: true}),
+  @post('/universities/faculty/major')
+  @response(200, {
+    description: 'List of majors to one faculty',
+    content: {
+      'application/json': {
+        schema: {
+          type: 'array',
         },
       },
-    })
-    university: University,
-  ): Promise<void> {
-    await this.universityRepository.updateById(id, university);
+    },
+  })
+  async getMajors(
+    @requestBody(getMajorsRequestBody) getMajor: {'universityID': string, 'facultyID':string}
+  ): Promise<Array<object> | undefined> {
+    return this.universityRepository.getMajors(getMajor.universityID,getMajor.facultyID);
   }
 
-  @put('/universities/{id}')
+  @post('/universities/faculty/major/template')
+  @response(200, {
+    description: 'List of templates to one major',
+    content: {
+      'application/json': {
+        schema: {
+          type: 'array',
+        },
+      },
+    },
+  })
+  async getTemplates(
+    @requestBody(getTemplatesRequestBody) getTemplate: {'universityID': string, 'facultyID':string, 'majorID': string}
+  ): Promise<Array<string> | undefined> {
+    return this.universityRepository.getTemplates(getTemplate.universityID,getTemplate.facultyID, getTemplate.majorID);
+  }
+
+  @put('/universities/faculty')
   @response(204, {
     description: 'University PUT success',
   })
-  async replaceById(
-    @param.path.number('id') id: number,
-    @requestBody() university: University,
+  async addNewFaculty(
+    @requestBody(NewFacultyRequestBody) newFaculty: {'universityID':string, 'newFacultyName':string}
   ): Promise<void> {
-    await this.universityRepository.replaceById(id, university);
+    await this.universityRepository.addNewFaculty(newFaculty.universityID, newFaculty.newFacultyName);
   }
 
-  @del('/universities/{id}')
+  @put('/universities/faculty/major')
   @response(204, {
-    description: 'University DELETE success',
+    description: 'University PUT success',
   })
-  async deleteById(@param.path.number('id') id: number): Promise<void> {
-    await this.universityRepository.deleteById(id);
+  async addNewMajor(
+    @requestBody(NewMajorRequestBody) newMajor: {'universityID':string, 'facultyID':string, 'newMajorName':string},
+  ): Promise<void> {
+    await this.universityRepository.addNewMajor(newMajor.universityID, newMajor.facultyID, newMajor.newMajorName);
+  }
+
+  @put('/universities/faculty/major/template')
+  @response(204, {
+    description: 'University PUT success',
+  })
+  async addNewTemplate(
+    @requestBody(NewTemplateRequestBody) newTemplate: {'universityID':string, 'facultyID': string, 'majorID':string, 'newTemplateID':string},
+  ): Promise<void> {
+    await this.universityRepository.addNewTemplate(newTemplate.universityID, newTemplate.facultyID, newTemplate.majorID, newTemplate.newTemplateID);
   }
 }
