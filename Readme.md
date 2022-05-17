@@ -2,6 +2,8 @@
 
 **_Próbáld ki a [honlapunkon](https://frea.nz/)_**
 
+**Frontend github link: https://github.com/KurotamaTakauji/Unigraph_Frontend**
+
 ## 📙 Tartalomjegyzék
 
 - [Leírás](#%EF%B8%8F-le%C3%ADr%C3%A1s)
