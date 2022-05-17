@@ -2,6 +2,8 @@
 
 **_Próbáld ki a [honlapunkon](https://frea.nz/)_**
 
+**Frontend github link: https://github.com/KurotamaTakauji/Unigraph_Frontend**
+
 ## 📙 Tartalomjegyzék
 
 - [Leírás](#%EF%B8%8F-le%C3%ADr%C3%A1s)
@@ -52,9 +54,9 @@ implementálni az oldalon ( _tantárgyak értékelése három fontos szempont sz
 
 |   Mire    |                                                                                Mit                                                                                 |                 Link                 |
 | :-------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------: |
-| Database  | <a href="https://www.mongodb.com/"><img width=100px src="https://raw.githubusercontent.com/TheBugsTeam/cloudified/main/Documentation/images/MongoDB_Logo.svg"></a> | [mongoDB](https://www.mongodb.com/)  |
-| Back-end  |  <a href="https://loopback.io/doc/en/lb4/"><img width=50px src="https://raw.githubusercontent.com/TheBugsTeam/cloudified/main/Documentation/images/Node.js_logo.svg"></a>   | [LoopBack 4](https://nodejs.org/en/)|
-| Front-end |    <a href="https://angular.io/"><img width=50px src="https://raw.githubusercontent.com/TheBugsTeam/cloudified/main/Documentation/images/React-icon.svg"></a>     |   [Angular](https://reactjs.org/)   |
+| Database  | <a href="https://www.mongodb.com/"><img width=100px src="https://raw.githubusercontent.com/tothadam19/freanz/main/resources/mongodb.jpg"></a> | [mongoDB](https://www.mongodb.com/)  |
+| Back-end  |  <a href="https://loopback.io/doc/en/lb4/"><img width=50px src="https://raw.githubusercontent.com/tothadam19/freanz/main/resources/loopback4.jpeg"></a>   | [LoopBack 4](https://nodejs.org/en/)|
+| Front-end |    <a href="https://angular.io/"><img width=50px src="https://raw.githubusercontent.com/tothadam19/freanz/main/resources/angular.svg"></a>     |   [Angular](https://reactjs.org/)   |
 
 **_További használt csomagok/dependeciák a [`package.json`](https://github.com/TheBugsTeam/cloudified/blob/main/package.json) fájlban találhatók meg_**
 
@@ -62,5 +64,5 @@ implementálni az oldalon ( _tantárgyak értékelése három fontos szempont sz
 
 |       Mire       |                                                                                           Mit                                                                                           |                         Link                         |
 | :--------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------: |
-|     Kódolás      | <a href="https://code.visualstudio.com/"><img width=50px src="https://raw.githubusercontent.com/TheBugsTeam/cloudified/main/Documentation/images/Visual_Studio_Code_1.35_icon.svg"></a> | [Visual Studio Code](https://code.visualstudio.com/) |
-| Testing requests |              <a href="https://www.postman.com/"><img width=90px src="https://raw.githubusercontent.com/TheBugsTeam/cloudified/main/Documentation/images/Postman.png"></a>               |         [LoopBack4 Swagger UI](https://loopback.io/doc/en/lb4/Preparing-the-API-for-consumption.html)|
+|     Kódolás      | <a href="https://code.visualstudio.com/"><img width=50px src="https://github.com/tothadam19/freanz/blob/main/resources/vsc.png"></a> | [Visual Studio Code](https://code.visualstudio.com/) |
+| Testing requests |              <a href="https://www.postman.com/"><img width=90px src="https://github.com/tothadam19/freanz/blob/main/resources/Swagger_Logo.png"></a>               |         [LoopBack4 Swagger UI](https://loopback.io/doc/en/lb4/Preparing-the-API-for-consumption.html)|
