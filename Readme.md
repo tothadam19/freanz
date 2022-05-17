@@ -28,6 +28,23 @@ Az UniGraph egy rugalmas, modern rendszer, ahol a közösség erejét használva
 
 implementálni az oldalon ( _tantárgyak értékelése három fontos szempont szerint, naptár beiktatása az oldalon, telefonos applikáció, stb_ )
 
+## Futtatás
+
+Ahhoz hogy a projektet futtatni tudd, több lépést kell végrehajtani. 
+
+Első sorban egy mongoDB-nek kell futnia a háttérben, ennek adatai [ebben](https://github.com/tothadam19/freanz/blob/main/src/datasources/mongo-db.datasource.ts) a file-ban lehet szerkeszteni. Egyik lehetőség, hogy dockerben fut az adatbázis, ehhez megtalálható a megfelelő yml, csak az alábbi parancsot kell kiadni.
+```bash
+  docker compose up -d
+```
+Ez elindítja az adatbázist, illetve, ha szükséges telepíti a mongoDB image-et. Megjegyzés: régebbi docker esetén `docker-compose` használatos, a `-d` flag használata akkor szükséges, ha szeretnéd, hogy háttérben fusson. Később ha végeztél a következő paranccsal lehet leállítani: `docker compose down`
+
+Ha egyszer fut az adatbázis, akkor már csak a node projectet kell elindítani, amihez első sorban szükséges annak a telepítése, és utána futtatható is.
+```bash
+  npm install
+  npm start
+```
+Ha egyszer elindult a project, akkor [localhost:3000](localhost:3000) lesz elérhető, böngészőből megtekinthető a Loopback keretrendszerbe beépített swagger UI.
+
 ## 📄 Dokumentáció
 
 ### Funkcionális követelmények:
