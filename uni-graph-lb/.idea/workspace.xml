@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="48cb527d-a2fd-4a08-b011-863d597692b1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/volumes/mongo/WiredTiger" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/mongo/WiredTiger.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/mongo/WiredTiger.turtle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/mongo/WiredTiger.wt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/mongo/WiredTigerHS.wt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/mongo/_mdb_catalog.wt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/mongo/collection-0-2835251459502470470.wt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/mongo/collection-0-3076777191959661022.wt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/mongo/collection-2-2835251459502470470.wt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/mongo/collection-2-3076777191959661022.wt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/mongo/collection-4-2835251459502470470.wt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/mongo/collection-4-3076777191959661022.wt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/mongo/diagnostic.data/metrics.2022-05-07T06-06-52Z-00000" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/mongo/diagnostic.data/metrics.2022-05-07T06-16-54Z-00000" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/mongo/index-1-2835251459502470470.wt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/mongo/index-1-3076777191959661022.wt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/mongo/index-3-2835251459502470470.wt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/mongo/index-3-3076777191959661022.wt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/mongo/index-5-2835251459502470470.wt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/mongo/index-5-3076777191959661022.wt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/mongo/index-6-2835251459502470470.wt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/mongo/journal/WiredTigerLog.0000000002" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/mongo/journal/WiredTigerPreplog.0000000001" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/mongo/journal/WiredTigerPreplog.0000000002" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/mongo/mongod.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/mongo/sizeStorer.wt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volumes/mongo/storage.bson" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="28pCnsxI168TGoifkxsCRbXU4W6" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2021.2.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="48cb527d-a2fd-4a08-b011-863d597692b1" name="Changes" comment="" />
+      <created>1651904309955</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1651904309955</updated>
+      <workItem from="1651904311264" duration="753000" />
+      <workItem from="1651915034419" duration="1803000" />
+      <workItem from="1651923293455" duration="2000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
