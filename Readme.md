@@ -10,7 +10,6 @@
 - [Dokumentáció](#-dokument%C3%A1ci%C3%B3)
   - [Funkcionális követelmények](#funkcion%C3%A1lis-k%C3%B6vetelm%C3%A9nyek)
   - [Nem funkcionális követelmények](#nem-funkcion%C3%A1lis-k%C3%B6vetelm%C3%A9nyek)
-  - [Use-case diagram](#use-case-diagram)
 - [Használt technológiák](#-haszn%C3%A1lt-technol%C3%B3gi%C3%A1k)
 - [Használt eszközök](#-haszn%C3%A1lt-eszk%C3%B6z%C3%B6k)
 
@@ -60,12 +59,6 @@ Ha egyszer elindult a project, akkor [localhost:3000](localhost:3000) lesz elér
 - Felhasználók jelszavainak titkosítása (jwt)
 - A felhasználói felület könnyen átlátható legyen
 - Ne fagyjon le a weboldal
-
-### Use-case diagram:
-
-<p align="center">
-  <img src="https://github.com/TheBugsTeam/cloudified/blob/main/Documentation/images/cloudified-use-case.png" width="700">
-</p>
 
 ## 🔧 Használt technológiák:
 
