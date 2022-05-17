@@ -1,6 +1,6 @@
 # UniGraph by FreanZ 📖
 
-**_Próbáld ki a [honlapunkon](https://frea.nz/)_**
+**_Hamarosan megjelenik a hivatalos weboldalunk is_**
 
 **Frontend github link: https://github.com/KurotamaTakauji/Unigraph_Frontend**
 
